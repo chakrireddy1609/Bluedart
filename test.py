@@ -1,13 +1,15 @@
 from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Chrome,ChromeOptions
+from selenium.webdriver import ChromeOptions
+
 
 options = ChromeOptions()
 service = Service(ChromeDriverManager().install())
-driver = Chrome(service=service,options=options)
+driver = webdriver.Chrome(service=service,options=options)
 driver.get("https://www.bluedart.com/home")
 wait = WebDriverWait(driver,10)
 wait.until(EC.visibility_of_element_located((By.CLASS_NAME,"home-dart-box")))
